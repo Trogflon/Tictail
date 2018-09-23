@@ -1,0 +1,648 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://app.ttcdn.co/theme_assets/sodermalm/main-59260b7.css" rel="stylesheet">
+
+
+    <title>
+        {{store_name}}
+        {{#list_page}}{{#navigation}}{{#is_current}}- {{label}}{{/is_current}}{{/navigation}}{{/list_page}}
+        {{#product_page}}{{#product}}- {{title}}{{/product}}{{/product_page}}
+        {{#about_page}}- {{#lang}}Info{{/lang}}{{/about_page}}
+    </title>
+    <style>
+      /*
+      **************************************
+      * Theme customizations
+      *
+      * You can change the sections below to easily make
+      * changes to your theme
+      **************************************
+      */
+
+      /*
+       * Change the value (120%) if don't have an aspect ratio of 5:6 for your images
+       * Aspect ratio 2:1  = 50%
+       * Aspect ratio 16:9 = 56.25%
+       * Aspect ratio 4:3  = 75%
+       * Aspect ratio 1:1  = 100%
+       * Aspect ratio 5:6  = 120%
+       * Aspect ratio 9:6  = 150%
+       * Aspect ratio 1:2  = 200%
+      */
+      .Product-Image-Aspect-Ratio {
+        padding-bottom: 120%;
+      }
+
+      /*
+       * Edit this value to change the background color of your shop
+      */
+      .Background-Color {
+        background-color: white;
+        background-image: url(https://svgshare.com/i/8Nm.svg);
+        background-repeat: no-repeat;
+       background-position: center center;
+       background-size: 173vh;
+       background-attachment: fixed;
+
+      }
+
+
+      /*
+       * Edit these values to change the colors for your "Add to cart"
+       * button on your product page
+      */
+      .Add-To-Cart-Button-Color {
+        background: #000000;
+        color: #FFFFFF;
+      }
+
+      /*
+       * Change this from 'display: block' to 'display: none' to remove
+       * the Facebook, Pinterest, Twitter and embed buttons on your product page
+      */
+      .Display-Social-Buttons-On-Product-Page {
+        display: none;
+      }
+
+      /*
+       * Edit the pixels values to make your logotype in the header smaller or larger
+      */
+      .Logotype-Size {
+        max-height: 100%;
+        max-width: 100%;
+      }
+
+      /*
+       * Edit the value (16px) below to make the navigation text smaller or larger
+      */
+      .Navigation-Font-Size {
+        font-size: 16px;
+      }
+
+      /*
+       * Edit the value (#8A8A8A) below to change the color of the navigation text
+      */
+      .Navigation-Color {
+        color: #8A8A8A;
+      }
+
+      .About__container {
+          padding: 16px;
+      }
+
+
+
+      .Page-navigation {
+          width: 100%;
+          height: 15px;
+
+      }
+
+      .Page-header{
+          padding: 30px;
+      }
+
+      .Page-header__title{
+          margin: auto;
+          width: 100%;
+      }
+
+      .ime_kolekcije{
+          padding: 50px;
+          text-align: center;
+      }
+
+      .item-list{
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          justify-content: center;
+
+      }
+
+
+
+      .myFooter{
+          text-align: center;
+          background-color: white;
+          height: 60px;
+          padding-top: 20px;
+      }
+
+      .myFooter a {
+          padding: 10px;
+          text-align: center;
+          font-size: 14px;
+      }
+
+      .myFooterLink{
+
+          color: black;
+      }
+
+
+
+      .Item-list{
+          padding: 0px 100px;
+
+      }
+
+     .glavni-okni{
+  float: left;
+  width: 50%;
+  padding: 30px;
+}
+
+#main-vsebina-produkt-strani:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px){
+    .glavni-okni{
+        width:100%;
+    }
+}
+
+#slideshow_thumbnails {
+      display: inline-block;
+      margin: 10px 0 10px 0;
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      left: 0;
+    }
+
+
+
+
+
+#slideshow_thumbnails img:hover{
+        border: 1px solid #505258;
+        cursor: pointer;
+    }
+
+   /*
+       * fixed menu
+      */
+     .fixedMenu {
+  overflow: hidden;
+  background-color: transparent;
+  position: fixed;
+  z-index: 4000;
+  top: 0;
+  width: 100%;
+}
+
+.fixedMenu a {
+  float: center;
+  display: block;
+  padding: 14px 16px;
+}
+
+.fixedMenu img {
+    width: 15%;
+}
+
+
+
+  .carousel-controls {
+display: -ms-flexbox;
+display: flex;
+-ms-flex-pack: justify;
+justify-content: space-between;
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left:0;
+right: 0;
+width: 100%;
+top: 50%;
+}
+
+.carousel-controls a {
+background-color: transparent;
+color: transparent;
+padding: 10px;
+height: 200%;
+}
+
+
+#arrow-next {
+    background-image: url(https://svgshare.com/i/8Ne.svg);
+    background-repeat: no-repeat;
+    
+}
+
+#arrow-prev {
+    background-image: url(https://svgshare.com/i/8Pp.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+.imekolekcije {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 35px;
+    font-size: 18px;
+
+}
+
+.ProductCell__title {
+    color: black;
+    font-size: 18px;
+}
+
+.title_cena {
+    text-align: center;
+}
+
+.carousel-inner img{
+    margin: 0 auto;
+    
+}
+
+    </style>
+    
+  </head>
+  <body>
+    <div class='fixedMenu'>
+          <a href="{{store_url}}">
+            <h1 class='Page-header__title'>
+              {{#logotype}}
+                <img class='Page-header__logotype Logotype-Size' src='https://svgshare.com/i/8Mj.svg' alt='{{store_name}}'/>
+              {{/logotype}}
+              {{#no_logotype}}
+                {{store_name}}
+              {{/no_logotype}}
+            </h1>
+          </a>
+        </div>
+      </header>
+
+
+
+
+
+      {{#about_page}}
+        <section class='About Container Page-container'>
+          <div class='About__container'>
+              {{#wallpaper}}
+                <div class='About__hero-image'>
+                    <div class='Masthead'>
+                      <div class='Masthead__spacer'></div>
+                      <div class='Masthead__image-wrapper SrcsetImageWrapper'>
+                        <div class='Masthead__background SrcsetImageWrapper__fallback'></div>
+                        <img class="Masthead__image SrcsetImageWrapper__image" src="{{url-1000}}" srcset="{{url-640}} 750w, {{url-1000}} 800w, {{url-2000}} 1000w" alt="">
+                      </div>
+                    </div>
+                </div>
+              {{/wallpaper}}
+              <div class='About__description'>
+                  {{{store_description}}}
+              </div>
+          </div>
+        </section>
+      {{/about_page}}
+
+
+      <!-- sizing -->
+      {{#sizing_page}}
+        <div class="sizing-page">
+            <h2>Sizing and fitting</h2>
+            <p>bla bla, bla bla bla. Bla.</p>
+        </div>
+      {{/sizing_page}}
+
+      {{#delivery_page}}
+        <div class="delivery-page">
+            <h2>Delivery</h2>
+            <p>Ma pošljemo kamor češ lej.</p>
+        </div>
+      {{/delivery_page}}
+
+
+      {{#list_page}}
+        {{#on_index}}
+<body class='Background-Color'>
+        <!-- Carousel -->
+          <div id="myCarouselContainer">
+
+          <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 90vh; margin: 0 auto">
+
+
+              <!-- Wrapper for slides -->
+  <div class="carousel-inner" style="width: 70vh; margin: 0 auto">
+    <div class="item active">
+    <a href="https://fofthel.com/product/frowny">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-3761e7d4c0b4482e923310a437887ffd.jpeg" alt="Frowny">
+      </a>
+    </div>
+
+         <div class="item">
+         <a href="https://fofthel.com/product/eyeball">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-9f843c587b6b40c995dfd98e061f915e.jpeg" alt="Eyeball">
+      </a>
+    </div>
+
+     <div class="item">
+     <a href="https://fofthel.com/product/snap">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-8c52d2ff92714db59c1dc3c350cb7e80.jpeg" alt="Snap">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/paletta">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-9f45295142c843abb5e9c9b2eb92a7cd.jpeg" alt="Paletta">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/zanzibar">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-7ef746a0e56e4453b57d0ec0b74f03c6.jpeg" alt="Zanzibar">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/frowny">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-4b8626255a6a41f4aabbe1fc1eb30a39.jpeg" alt="Frowny">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/eyeball">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-402ea4b4cc274a63bdf590065632658f.jpeg" alt="Eyeball">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/snap">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-647b9fb35c784ffd98e7ac4a4635d128.jpeg" alt="Snap">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/paletta">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-39c328e71935473fabfd5cc4b6ba6726.jpeg" alt="Paletta">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/paletta">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-6915379c21df40c298c05d57c740a5b0.jpeg" alt="Paletta">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/frowny">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-34a4d687ecb247ac8fbaba2d95fd4a1b.jpeg" alt="Frowny">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/eyeball">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-52dc29a1c4194934b630ea1fba7f18e0.jpeg" alt="Eyeball">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/snap">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-5b12134e825849baa82eb4e3bc2fe2d4.jpeg" alt="Snap">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/paletta">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-813f6b116c8740cf81f73c353c3cb497.jpeg" alt="Paletta">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/frowny">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-4d073b6133bc4e84b7997fa50b5153e0.jpeg" alt="Frowny">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/snap">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-8a5028be0471410bb67cf7618dc1c338.jpeg" alt="Snap">
+      </a>
+    </div>
+
+    <div class="item">
+    <a href="https://fofthel.com/product/frowny">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-b5df186262c34d6cbfed1c1dab83603e.jpeg" alt="Frowny">
+      </a>
+    </div>
+
+     <div class="item">
+     <a href="https://fofthel.com/product/zanzibar">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-46a845815fdf445fba74e3565bb13997.jpeg" alt="Zanzibar">
+      </a>
+    </div>
+
+     <div class="item">
+     <a href="https://fofthel.com/product/snap">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-949ed3c78edd4cbdb5b3d6f54e07c520.jpeg" alt="Snap">
+      </a>
+    </div>
+
+     <div class="item">
+     <a href="https://fofthel.com/product/paletta">
+      <img src="https://imgix.ttcdn.co/i/product/original/0/675555-6769d7a67fa54a07af78d40bc110d26f.jpeg" alt="Paletta">
+      </a>
+    </div>
+
+
+      <div class="imekolekcije">Conceptual Leisurewear / Autumn 2018 / »Freedom Of The Lies« Collection</div>
+  </div>
+
+  <!-- Left and right controls -->
+
+<div class="carousel-controls" style="margin: 0 auto">
+    <a id="arrow-prev" href="#myCarousel" data-slide="prev">
+
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+   <a id="arrow-next" href="#myCarousel" data-slide="next">
+
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+    </div>
+        </div>
+        
+
+
+        </div>
+
+</body>
+        {{/on_index}}
+
+
+        <section class='Listing Container Page-container'>
+
+
+
+
+          <ul class='Item-list'>
+            {{#products}}
+              <li class='ProductCell'>
+                <a href="{{url}}">
+                  <div>
+                    <div class='ProductImage__spacer Product-Image-Aspect-Ratio'></div>
+                    <div class='ProductImage__image-wrapper SrcsetImageWrapper__fallback'>
+                      {{#primary_image}}
+                        <img class="ProductImage__image SrcsetImageWrapper__image" src="{{url-1000}}" srcset="{{url-300}} 750w, {{url-500}} 800w, {{url-1000}} 1000w" alt="">
+                      {{/primary_image}}
+                      {{^primary_image}}
+                        <div class='ProductImage__image--empty'></div>
+                      {{/primary_image}}
+                    </div>
+                  </div>
+                  <div class="title_cena">
+                    <h3 class='ProductCell__title'>{{title}}</h3>
+                   <h3 class='ProductCell__title'>
+                    {{#in_stock}}
+                      <div>{{{price_tag}}}</div>
+                    {{/in_stock}}
+                    {{#out_of_stock}}
+                      <div>{{#lang}}Out of stock{{/lang}}</div>
+                      <p class='Product__price'></p>
+                    {{/out_of_stock}}
+                    </h3>
+                  </div>
+                </a>
+              </li>
+            {{/products}}
+          </ul>
+        </section>
+      {{/list_page}}
+
+<!-- PRODUCT PAGE -->
+
+      {{#product_page}}
+  <article id="main-vsebina-produkt-strani">
+    {{#product}}
+      <div class="glavni-okni" id="okno-fotke-produkta">
+
+        {{#slideshow-500}}
+
+        {{/slideshow-500}}
+
+
+
+
+        <div id="slideshow_thumbnails">
+
+            {{#all_images}}
+            <img src="{{url-50}}" alt="{{title}} - {{position}}" itemprop="image" role="button">
+
+            {{/all_images}}
+        </div>
+      </div>
+      <div class="glavni-okni" id="okno-info-produkta">
+      <div class='Product__details'>
+      <div class='Product__container'>
+        <div class='Product__footer'>
+
+
+
+          {{#add_to_cart}}
+            <div class="Product__variations">{{variations_select}}</div>
+              <div class="Product__add-to-cart Add-To-Cart-Button-Color">
+              {{#add_to_cart_button}}
+                {{#lang}}Add to cart{{/lang}}
+              {{/add_to_cart_button}}
+            </div>
+          {{/add_to_cart}}
+
+
+        </div>
+        <h2 class='Product__title'>{{title}}</h2>
+        {{#in_stock}}
+          <p class='Product__price'>{{price_tag}}</p>
+        {{/in_stock}}
+        {{#out_of_stock}}
+          <p class='Product__price Product__price--out-of-stock'>{{#lang}}Out of stock{{/lang}}</p>
+        {{/out_of_stock}}
+        <div class='Product__description'>{{{description}}}</div>
+        <ul class='Product__policies'>
+
+
+        </ul>
+      </div>
+      </div>
+    {{/product}}
+  </article>
+
+
+{{/product_page}}
+
+
+ <!-- FOOTER -->
+<footer class="myFooter">
+
+<a class="myFooterLink" href="{{store_url}}/about">{{#lang}}Info{{/lang}}</a>
+<a class="myFooterLink" href="{{store_url}}/sizing">{{#lang}}Sizing{{/lang}}</a>
+<a class="myFooterLink" href="{{store_url}}/delivery">{{#lang}}Terms & Conditions{{/lang}}</a>
+<a class="myFooterLink" href="mailto:{{store_email}}">{{#lang}}Contact{{/lang}}</a>
+<a class="myFooterLink" href="https://www.instagram.com/fofthel/" target="_blank">Instagram</a>
+<a class="myFooterLink" href="myspace" target="_blank">MySpace</a>
+</footer>
+
+    </div>
+
+
+    <div class='Modal'>
+      <button type='button' class='Modal__close'></button>
+      <div class='Modal__container Modal__container--image'></div>
+      <div class='Modal__container Modal__container--search'>
+        {{{search}}}
+      </div>
+      <div class='Modal__backdrop'></div>
+    </div>
+
+
+
+   <!-- scRIPts -->
+
+    <script>
+      if('objectFit' in document.documentElement.style === false) {
+        var forEach = function (array, callback, scope) {
+          for (var i = 0; i < array.length; i++) {
+            callback.call(scope, i, array[i]);
+          }
+        };
+
+        var images = document.querySelectorAll('.SrcsetImageWrapper');
+        forEach(images, function (index, image) {
+          var imageFallback = image.querySelector('.SrcsetImageWrapper__fallback')
+          var imageElement = image.querySelector('.SrcsetImageWrapper__image')
+          if (!imageFallback || !imageElement) return;
+          imageFallback.style.backgroundImage = 'url('+ imageElement.src +')'
+          imageFallback.style.display = 'block'
+          imageElement.style.display = 'none'
+        });
+      }
+    </script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://app.ttcdn.co/theme_assets/sodermalm/main-59260b7.js"></script>
+    <link href="{{assets_url}}/shared/css/base.css" rel="stylesheet" type="text/css">
+  </body>
+</html>
+
